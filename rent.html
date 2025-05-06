@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rent Product - Uni Rent</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Rent: {{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p><strong>Price per day:</strong> ₹{{ product.price_per_day }}</p>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="days" class="form-label">Number of Days:</label>
+            <input type="number" class="form-control" id="days" name="days" min="1" required>
+        </div>
+        <button type="submit" class="btn btn-success">Calculate Total</button>
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Back</a>
+    </form>
+    {% if total is defined %}
+        <div class="alert alert-info mt-4">
+            <strong>Total Rent:</strong> ₹{{ total }} for {{ days }} day(s)
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
